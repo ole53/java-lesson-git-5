@@ -23,7 +23,6 @@ public class Branch {
     //TODO
     public void removeCommit(int hash) {
         Set<Commit> commits = getCommits();
-        Boolean isDel = false;
 
         if (commits.size() == 0) {
             System.out.println("В ветке не найдено ни одного коммита!");
@@ -32,18 +31,13 @@ public class Branch {
 
         for (Commit i : this.commits ) {
             if (i.hash == hash) {
-                isDel = true;
                 this.commits.remove(i);
-                break;
+                System.out.println("Коммит с hash-значением: " + hash + " удален!");
+                return;
             }
         }
 
-        if (isDel) {
-            System.out.println("Коммит с hash-значением: " + hash + " удален!");
-        } else {
-            System.out.println("Коммит с hash-значением: " + hash + " не найден!");
-        }
-
+        System.out.println("Коммит с hash-значением: " + hash + " не найден!");
     }
 
     public String getBranchName() {
@@ -53,11 +47,14 @@ public class Branch {
     //TODO
     @Override
     public String toString() {
-        String result;
-        result = "Имя ветки: " + this.name + "\n";
+        StringBuilder str = new StringBuilder();
+        str.append("Имя ветки: ");
+        str.append(this.name);
+        str.append("\n");
         for (Commit c: getCommits()) {
-            result = result + c.toString() + "\n";
+            str.append(c.toString());
+            str.append("\n");
         }
-        return result;
+        return str.toString();
     }
 }

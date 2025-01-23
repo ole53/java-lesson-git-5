@@ -32,7 +32,7 @@ class RepositoryTest {
         repo.addBranch(branch);
         repo.findCommitsByAuthor("okhodakov");
 
-        Assertions.assertTrue(repo.findCommitsByAuthor("okhodakov").equals(commit));
+        Assertions.assertEquals(repo.findCommitsByAuthor("okhodakov"), commit);
     }
 
     @Test

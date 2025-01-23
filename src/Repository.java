@@ -10,19 +10,13 @@ public class Repository {
     }
 
     public void addBranch(Branch branch) {
-        Boolean isExists = false;
         //TODO Нельзя добавлять ветки с однинаковыми именами
         for (Branch br : getBranches()) {
-            if (br.getBranchName().equals(br.getBranchName())) {
-                isExists = true;
-                break;
+            if (br.getBranchName().equals(branch.getBranchName())) {
+                System.out.println("Ветка с именем " + branch.getBranchName() + " уже создана!");
+                System.out.println("Нельзя добавлять ветки с одинаковым именем!");
+                return;
             }
-        }
-
-        if (isExists) {
-            System.out.println("Ветка с именем " + branch.getBranchName() + " уже создана!");
-            System.out.println("Нельзя добавлять ветки с одинаковым именем!");
-            return;
         }
 
         this.branches.add(branch);
@@ -35,8 +29,8 @@ public class Repository {
     //TODO
     public Commit findCommitsByAuthor(String author) {
         Commit comm_res = null;
-        Boolean isFind = false;
         for (Branch br : getBranches()) {
+            Boolean isFind = false;
             for (Commit cm : br.getCommits()) {
                 if (cm.getCommitAuthor().equals(author)) {
                     isFind = true;
@@ -55,14 +49,22 @@ public class Repository {
     //TODO
     @Override
     public String toString() {
-        String result = "Репозиторий." + "\n" + " Список веток:";
+        StringBuilder str = new StringBuilder();
+        str.append("Репозиторий.");
+        str.append("\n");
+        str.append(" Список веток:");
         for (Branch br : getBranches()) {
-            result = result + "  Имя ветки: " + br.getBranchName() + "\n";
-            result = result + "    Список коммитов:" + "\n";
+            str.append("  Имя ветки: ");
+            str.append(br.getBranchName());
+            str.append("\n");
+            str.append("    Список коммитов:");
+            str.append("\n");
+
             for (Commit cm : br.getCommits()) {
-                result = "     - Коммит: " + cm.toString();
+                str.append("     - Коммит: ");
+                str.append(cm.toString());
             }
         }
-        return result;
+        return str.toString();
     }
 }

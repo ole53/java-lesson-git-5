@@ -10,7 +10,6 @@ public class Repository {
     }
 
     public void addBranch(Branch branch) {
-        //TODO Нельзя добавлять ветки с однинаковыми именами
         for (Branch br : getBranches()) {
             if (br.getBranchName().equals(branch.getBranchName())) {
                 System.out.println("Ветка с именем " + branch.getBranchName() + " уже создана!");

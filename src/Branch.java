@@ -20,7 +20,6 @@ public class Branch {
         return this.commits;
     }
 
-    //TODO
     public void removeCommit(int hash) {
         Set<Commit> commits = getCommits();
 

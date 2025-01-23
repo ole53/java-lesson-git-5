@@ -26,15 +26,14 @@ public class Repository {
         return this.branches;
     }
 
-    //TODO
     public Commit findCommitsByAuthor(String author) {
-        Commit comm_res = null;
+        Commit commitResult = null;
         for (Branch br : getBranches()) {
             Boolean isFind = false;
             for (Commit cm : br.getCommits()) {
                 if (cm.getCommitAuthor().equals(author)) {
                     isFind = true;
-                    comm_res = cm;
+                    commitResult = cm;
                     break;
                 }
             }
@@ -43,10 +42,9 @@ public class Repository {
             }
         }
 
-        return comm_res;
+        return commitResult;
     }
 
-    //TODO
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

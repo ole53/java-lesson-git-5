@@ -48,43 +48,42 @@ class RepositoryTest {
     }
 
     @Test
-    public void check_removeCommit() {
+    public void test_removeCommit() {
         Branch branch = new Branch("master");
-        String diff1 = "dif";
-        String diff2 = "dif2";
-        String mess1 = "Init";
-        String mess2 = "Init2";
-        String author1 = "Lera";
-        String author2 = "Lera2";
+        String diffCommitFst = "dif";
+        String diffCommitSec = "dif2";
+        String messCommitFst = "Init";
+        String messCommitSec = "Init2";
+        String authorCommitFst = "Lera";
+        String authorCommitSec = "Lera2";
 
-        int hash1 = (diff1 + mess1 + author1).hashCode();
+        int hashFst = (diffCommitFst + messCommitFst + authorCommitFst).hashCode();
 
-        Commit commit = new Commit(diff1, mess1, author1);
-        Commit commit2 = new Commit(diff2, mess2, author2);
+        Commit commit = new Commit(diffCommitFst, messCommitFst, authorCommitFst);
+        Commit commitSec = new Commit(diffCommitSec, messCommitSec, authorCommitSec);
 
         branch.addCommit(commit);
-        branch.addCommit(commit2);
-
-        branch.removeCommit(hash1);
+        branch.addCommit(commitSec);
+        branch.removeCommit(hashFst);
 
         Assertions.assertFalse(branch.getCommits().contains(commit));
     }
 
     @Test
-    public void check_removeNotCreatedCommit() {
+    public void test_removeNotCreatedCommit() {
         Branch branch = new Branch("master");
-        String diff1 = "dif";
-        String diff2 = "dif2";
-        String mess1 = "Init";
-        String mess2 = "Init2";
-        String author1 = "Lera";
-        String author2 = "Lera2";
+        String diffCommitFst = "dif";
+        String diffCommitSec = "dif2";
+        String messCommitFst = "Init";
+        String messCommitSec = "Init2";
+        String authorCommitFst = "Lera";
+        String authorCommitSec = "Lera2";
 
-        int hash2 = (diff2 + mess2 + author2).hashCode();
+        int hashSec = (diffCommitSec + messCommitSec + authorCommitSec).hashCode();
 
-        Commit commit = new Commit(diff1, mess1, author1);
+        Commit commit = new Commit(diffCommitFst, messCommitFst, authorCommitFst);
         branch.addCommit(commit);
-        branch.removeCommit(hash2);
+        branch.removeCommit(hashSec);
 
         Assertions.assertTrue(branch.getCommits().contains(commit));
     }

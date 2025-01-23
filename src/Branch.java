@@ -29,9 +29,9 @@ public class Branch {
             return;
         };
 
-        for (Commit i : this.commits ) {
+        for (Commit i : commits) {
             if (i.hash == hash) {
-                this.commits.remove(i);
+                commits.remove(i);
                 System.out.println("Коммит с hash-значением: " + hash + " удален!");
                 return;
             }
@@ -44,7 +44,6 @@ public class Branch {
         return this.name;
     }
 
-    //TODO
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

@@ -24,7 +24,7 @@ public class Branch {
     public void removeCommit(int hash) {
         Set<Commit> commits = getCommits();
 
-        if (commits.size() == 0) {
+        if (commits.isEmpty()) {
             System.out.println("В ветке не найдено ни одного коммита!");
             return;
         };

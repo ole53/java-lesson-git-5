@@ -21,11 +21,43 @@ public class Branch {
     }
 
     //TODO
-    public void removeCommit(int hash) {}
+    public void removeCommit(int hash) {
+        Set<Commit> commits = getCommits();
+        Boolean isDel = false;
+
+        if (commits.size() == 0) {
+            System.out.println("В ветке не найдено ни одного коммита!");
+            return;
+        };
+
+        for (Commit i : this.commits ) {
+            if (i.hash == hash) {
+                isDel = true;
+                this.commits.remove(i);
+                break;
+            }
+        }
+
+        if (isDel) {
+            System.out.println("Коммит с hash-значением: " + hash + " удален!");
+        } else {
+            System.out.println("Коммит с hash-значением: " + hash + " не найден!");
+        }
+
+    }
+
+    public String getBranchName() {
+        return this.name;
+    }
 
     //TODO
     @Override
     public String toString() {
-        return null;
+        String result;
+        result = "Имя ветки: " + this.name + "\n";
+        for (Commit c: getCommits()) {
+            result = result + c.toString() + "\n";
+        }
+        return result;
     }
 }

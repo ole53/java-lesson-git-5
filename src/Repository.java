@@ -10,10 +10,22 @@ public class Repository {
     }
 
     public void addBranch(Branch branch) {
+        //TODO Нельзя добавлять ветки с однинаковыми именами
         this.branches.add(branch);
     }
 
     public Set<Branch> getBranches() {
         return this.branches;
+    }
+
+    //TODO
+    public Commit findCommitsByAuthor(String author) {
+        return null;
+    }
+
+    //TODO
+    @Override
+    public String toString() {
+        return null;
     }
 }

@@ -19,4 +19,10 @@ public class Commit {
         this.time = LocalDateTime.now();
         this.hash = (diff + message + author).hashCode();
     }
+
+    //TODO
+    @Override
+    public String toString() {
+        return null;
+    }
 }

@@ -19,4 +19,13 @@ public class Branch {
     public Set<Commit> getCommits() {
         return this.commits;
     }
+
+    //TODO
+    public void removeCommit(int hash) {}
+
+    //TODO
+    @Override
+    public String toString() {
+        return null;
+    }
 }

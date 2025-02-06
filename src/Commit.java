@@ -19,4 +19,15 @@ public class Commit {
         this.time = LocalDateTime.now();
         this.hash = (diff + message + author).hashCode();
     }
+
+    public String getCommitAuthor() {
+        return this.author;
+    }
+
+    @Override
+    public String toString() {
+        String result = "Коммит: " + this.message + " Автор: " + this.author +
+                        " Время события: " + this.time + " Hash: " + this.hash;
+        return result;
+    }
 }
